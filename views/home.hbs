@@ -1,0 +1,50 @@
+<div class="conatiner-fluid p-5 m-4">
+    <div class="row">
+        <div class="col">
+            Botdagi foydalanuvchilar soni: {{len}} <br>
+            Mavjud guruhlar soni: {{lenGroup}}
+        </div>
+        <div class="col">
+            <form action="/add" method="post" class="mx-100">
+                <h1>Guruh qo'shish</h1>
+            <div class="mb-3 d-flex justify-content-between">
+                <label for="course">Kursni tanlang</label>
+                <select class="form-select" aria-label="Default select example" name="course" id="course">
+                <option value="1">1-kurs</option>
+                <option value="2">2-kurs</option>
+                <option value="3">3-kurs</option>
+                <option value="4">4-kurs</option>
+                </select>
+                </div>
+            <div class="mb-3 d-flex justify-content-between">
+                    <label for="groupName">Guruh nomini kiriting:</label>
+                    <input type="text" class="form-control" name="groupName" placeholder="Guruh nomi" id="groupName">
+                </div>
+            <div class="mb-3 d-flex justify-content-between">
+                    <label for="context">Guruh bir haftalik dars jadvalini kiriting:</label>
+                    <textarea name="context" id="context" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mx-auto w-50">Jo'natish</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>Barcha guruhlar</h1>
+            {{#if groups}}
+            <div class="row">
+            {{#each groups as |course|}}
+                <div class="col">
+                    <h2>{{inc @index}}-kurslar</h2>
+                    <ol>
+                    {{#each course}}
+                        <li><a class="btn btn-primary m-2" href="/view/{{groupName}}">{{groupName}}</a><div class="btn-group"><a class="btn btn-success" href="/edit/{{groupName}}"><i class="fa-regular fa-pen-to-square"></i></a><a class="btn btn-danger" href="/delete/{{groupName}}"><i class="fa-solid fa-trash"></i></a></div></li>
+                    {{/each}}
+                    </ol>
+                </div>
+            {{/each}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

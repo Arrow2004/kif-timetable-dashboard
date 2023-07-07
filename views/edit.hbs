@@ -1,0 +1,26 @@
+<div class="conatiner w-50 mx-auto">
+    <h1>Guruhni tahrirlash {{group.groupName}}</h1>
+    <form action="/edit/{{group.groupName}}" method="post" class="d-flex flex-column mx-100 justify-content-center">
+            <div class="mb-4 d-flex justify-content-between">
+                <label for="course">Kursni tanlang</label>
+                <select class="form-select" aria-label="Default select example" name="course" id="course">
+                <option value="{{group.course}}" selected>{{#if group.course}}{{group.course}}-kurs{{else}}Kursni tanlang{{/if}}</option>
+                <option value="1">1-kurs</option>
+                <option value="2">2-kurs</option>
+                <option value="3">3-kurs</option>
+                <option value="4">4-kurs</option>
+                </select>
+                </div>
+            <div class="mb-4 d-flex justify-content-between">
+                    <label for="groupName">Guruh nomini kiriting:</label>
+                    <input type="text" class="form-control" name="groupName" placeholder="Guruh nomi" id="groupName" value="{{group.groupName}}">
+                </div>
+            <div class="mb-4">
+                    <label for="context">Guruh bir haftalik dars jadvalini kiriting:</label>
+                    <textarea name="context" id="context" class="form-control mt-1" rows="15">
+                        {{group.context}}
+                    </textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mx-auto w-50">Jo'natish</button>
+            </form>
+</div>
